@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  snake:
+  chat-app:
     image: 'blakemfordham/chat-app'
     environment:
       - "PORT:3000"
