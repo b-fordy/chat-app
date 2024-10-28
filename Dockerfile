@@ -1,4 +1,4 @@
-FROM mhart/alpine-node 
-COPY . /app
-CMD node /app/app.js
-EXPOSE 3000
+FROM mhart/alpine-node
+COPY . /
+CMD ["node", "index.js"]
+EXPOSE 3700
