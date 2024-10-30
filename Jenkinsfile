@@ -9,16 +9,11 @@ stage('Cloning Git')
 
 stage('SCA-SAST-SNYK')
 {
-    agent 
-    {
-        label 'ubuntu-us-app'
-    }
-
-        snykSecurity(
-            snykInstallation: 'Snyk',
-            snykTokenId: 'snyk_credentials',
-            severity: 'critical' 
-        )
+    snykSecurity(
+        snykInstallation: 'Snyk',
+        snykTokenId: 'snyk_credentials',
+        severity: 'critical' 
+    )
 }
 
 stage('Build-and-Tag')
