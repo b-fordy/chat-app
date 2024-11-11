@@ -16,6 +16,23 @@ stage('SCA-SAST-SNYK')
     )
 }
 
+stage('SonarQube Analysis')
+{
+    agent {
+        label 'ubuntu-us-app'
+    }
+    steps {
+        script {
+            def scannerHome = tool 'SonarQubeScanner'
+            withSonarQubeEnv('sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=game-app \
+                    -Dsonar.source=."
+            }
+        }
+    }
+}
+
 stage('Build-and-Tag')
 {
     app = docker.build('blakemfordham/chat-app')
