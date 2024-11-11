@@ -10,7 +10,6 @@ pipeline {
                 checkout scm
             }
         }
-    }
 
     stage('SCA-SAST-SNYK-TEST') {
         agent any
@@ -76,4 +75,5 @@ pipeline {
             sh "docker-compose up -d"
         }
     }
+}
 }
